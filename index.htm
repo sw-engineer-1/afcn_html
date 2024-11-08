@@ -21,6 +21,7 @@
    <meta property="twitter:image:height" content="137">
 
    <style>
+
    BODY {
       --background: #191919;
       --alt-background: #151515;
@@ -37,6 +38,7 @@
       font-family: Lato,sans-serif;
       font-weight: 400;
       letter-spacing: .5px;   }
+
    header {
       background-color : var(--alt-background);
       position:sticky;
@@ -76,11 +78,11 @@
    TH {
       /*font-weight : normal;*/
       text-align : left;
+      vertical-align: top;
    }
    TD {
       vertical-align: top;
    }
-   /*TABLE.committee TH { width : 25% }*/
    IMG.tile {
       height: 120px;
       width: auto;
@@ -91,6 +93,26 @@
    .b { font-weight : bold; }
    .socials{ text-align : right; vertical-align: top; padding-right:var(--margin); background-color:#222222}
    .img-board { padding: 0 auto; text-align: center; }
+   .role { margin-bottom : var(--margin); }
+
+   /* mobile */
+   @media (max-width: 767px)
+   {
+      IMG { max-width: 75vw; }
+      .role { width: 50%; float:left; }
+   }
+
+   /* tablet + desktop */
+   @media (min-width: 768px)
+   {
+      .role { width: 25%; float:left; }
+   }
+
+   /* desktop */
+   @media (min-width: 992px)
+   {
+   }
+
    </style>
 </head>
 <body>
@@ -156,26 +178,28 @@
       
    </article>
 
-   <footer>
-      <table class="committee small page" cellpadding="0" cellmargin="0">
-         <tr>
-            <th>Chairman:</th>
-            <th>Technical Directors:</th>
-            <th>Driver Training:</th>
-            <th>Secretariat:</th>
-         </tr>
-         <tr>
-            <td>Murray Paul</td>
-            <td>Dave Monks<br>Paul Goddard</td>
-            <td>Nick Wilson<br>Michael Burton</td>
-            <td>Frances Vipond<br>Phil Smith<br>Harry Finch-Pawley</td>
-         </tr>
-      </table>
-      <div class="small page" style="margin-top:var(--margin)">
+   <footer class="small">
+      <div class="page">
+         <div class="role">
+            <span class="b">Chairman:</span><br>
+            Murray&nbsp;Paul
+         </div>
+         <div class="role">
+            <span class="b">Technical Directors:</span><br>
+            Dave&nbsp;Monks<br>Paul&nbsp;Goddard
+         </div>
+         <div class="role">
+            <span class="b">Driver Training:</span><br>
+            Nick Wilson<br>Michael&nbsp;Burton
+         </div>
+         <div class="role">
+            <span class="b">Secretariat:</span><br>
+            Frances&nbsp;Vipond<br>Phil&nbsp;Smith<br>Harry&nbsp;Finch-Pawley
+         </div>
+
          <span class="b">AFCN Motorsport Ltd</span><br>
          85 Cromwell, Coventry, CV4 8AQ<br>
          Registered in England No. 16027761
       </div>
-
    </footer>
 </body>
