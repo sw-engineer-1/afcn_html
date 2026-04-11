@@ -396,12 +396,11 @@ function el( id )
    return document.getElementById( id );
 }
 
-function onNavClick( elem )
+function showSection( sectionName, pushState )
 {
-   if( !elem ) return;
-   if( !( 'section' in elem.dataset ) ) return;
+   if( !sectionName ) return;
 
-   // deselect currently selected item
+   // deselect currently selected nav item and hide its section
    var elem_arr = document.getElementsByClassName( 'navselected' );
    if( elem_arr && elem_arr.length )
    {
@@ -409,23 +408,54 @@ function onNavClick( elem )
       {
          var item = elem_arr[ ind ];
          if( !( 'section' in item.dataset ) ) continue;
-         var section = el( item.dataset.section );
-         if( section )
-         {
-            section.style.display = 'none';
-            item.classList.remove( 'navselected' );
-         }
+         var prev = el( item.dataset.section );
+         if( prev ) prev.style.display = 'none';
+         item.classList.remove( 'navselected' );
       }
    }
 
-   // select and show new section
-   var section = el( elem.dataset.section );
-   if( section )
+   // select the matching nav button and show its section
+   var section = el( sectionName );
+   if( section ) section.style.display = 'block';
+
+   var btns = document.querySelectorAll( '.navbtn[data-section="' + sectionName + '"]' );
+   if( btns.length ) btns[0].classList.add( 'navselected' );
+
+   // update browser history
+   if( pushState )
    {
-      section.style.display = 'block';
-      elem.classList.add( 'navselected' );
+      var anchor = sectionName == 'home' ? '/' : '#' + sectionName;
+      history.pushState( { section: sectionName }, '', anchor );
    }
 }
+
+function onNavClick( elem )
+{
+   if( !elem ) return;
+   if( !( 'section' in elem.dataset ) ) return;
+   showSection( elem.dataset.section, true );
+}
+
+// handle back/forward navigation
+window.addEventListener( 'popstate', function( e )
+{
+   var sectionName = ( e.state && e.state.section ) ? e.state.section : defaultSection();
+   showSection( sectionName, false );
+} );
+
+function defaultSection()
+{
+   var first = document.querySelector( '.navbtn[data-section]' );
+   return first ? first.dataset.section : null;
+}
+
+// on load, navigate to the anchor in the URL if present
+(function()
+{
+   var anchor = window.location.hash.replace( '#', '' );
+   var target = anchor && el( anchor ) ? anchor : defaultSection();
+   if( target ) showSection( target, false );
+})();
    </script>
 </body>
 </html>
