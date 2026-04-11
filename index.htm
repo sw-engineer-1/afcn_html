@@ -190,7 +190,7 @@
       color: var(--text);
    }
    .img-board { padding: 0 auto; text-align: center; }
-   .role { margin-bottom: var(--margin); }
+   .foot-25, .foot-50 { margin-bottom: var(--margin); }
 
    /* narrow mobile */
    @media (max-width: 440px)
@@ -200,7 +200,8 @@
       img.banner-logo { max-width: 66%; height: auto; }
       img { max-width: 75vw; }
       .page { margin: 0 3px 0 3px; }
-      .role { width: 50%; float: left; }
+      .foot-25 { width: 50%; float: left; }
+      .foot-50 { width: 100%; float: left; }
    }
 
    /* mobile */
@@ -208,21 +209,24 @@
    {
       img { max-width: 75vw; }
       .page { margin: 0 3px 0 3px; }
-      .role { width: 50%; float: left; }
+      .foot-25 { width: 50%; float: left; }
+      .foot-50 { width: 100%; float: left; }
    }
 
    /* tablet */
    @media (min-width: 768px) and (max-width: 991px)
    {
       .page { margin: 0 8px 0 8px; }
-      .role { width: 25%; float: left; }
+      .foot-25 { width: 25%; float: left; }
+      .foot-50 { width: 50%; float: left; }
    }
 
    /* desktop */
    @media (min-width: 992px)
    {
       .page { max-width: 1000px; margin: auto; }
-      .role { width: 25%; float: left; }
+      .foot-25 { width: 25%; float: left; }
+      .foot-50 { width: 50%; float: left; }
    }
 
    </style>
@@ -362,31 +366,56 @@
 
             </div>
          </section>
+
+         <section id="privacy" style="display:none;">
+            <h2>Privacy &amp; Cookie Policy</h2>
+            <p>The best privacy policy is a simple one: we don't collect your data. AFCN Motorsport Ltd has designed this website so that no personal information is gathered from visitors at any point.</p>
+
+            <h3>Data collection</h3>
+            <p>This website collects no personal information whatsoever. There are no contact forms, mailing list sign-ups, analytics scripts, or tracking of any kind.</p>
+
+            <h3>Cookies</h3>
+            <p>We do not set any cookies ourselves. This site is delivered through the Cloudflare content delivery network, which may place strictly technical cookies, such as those used for bot detection and security as part of its service. These are set by Cloudflare, not by us, and are beyond our control. For full details, see <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/" target="_blank" title="Cloudflare Cookie documentation - opens in a new tab">Cloudflare's Cookie documentation</a>.</p>
+
+            <h3>Third-party services</h3>
+            <p>All content on this site including fonts, images, and scripts are served directly from our own domain. The one exception is Cloudflare, which acts as an intermediary to provide security and performance. Beyond that, we use no third-party analytics, advertising networks, social media trackers, or embedded services.</p>
+
+            <h3>Contact</h3>
+            <p>AFCN Motorsport Ltd, 85 Cromwell, Coventry, CV4 8AQ<br>
+               Registered in England No. 16027761
+            </p>
+         </section>
       </article>
    </main>
 
-   <footer class="small">
+   <footer aria-label="Footer">
       <div class="page">
-         <div class="role">
+         <div class="foot-25">
             <span class="b">Chairman:</span><br>
             Murray&nbsp;Paul
          </div>
-         <div class="role">
+         <div class="foot-25">
             <span class="b">Technical Directors:</span><br>
             Dave&nbsp;Monks<br>Paul&nbsp;Goddard
          </div>
-         <div class="role">
+         <div class="foot-25">
             <span class="b">Driver Training:</span><br>
             Nick Wilson<br>Michael&nbsp;Burton
          </div>
-         <div class="role">
+         <div class="foot-25">
             <span class="b">Secretariat:</span><br>
             Frances&nbsp;Vipond<br>Phil&nbsp;Smith<br>Harry&nbsp;Finch-Pawley
          </div>
 
-         <span class="b">AFCN Motorsport Ltd</span><br>
-         85 Cromwell, Coventry, CV4 8AQ<br>
-         Registered in England No. 16027761
+         <div class="foot-50">
+            <span class="b">AFCN Motorsport Ltd</span><br>
+            85 Cromwell, Coventry, CV4 8AQ<br>
+            Registered in England No. 16027761<br>
+         </div>
+
+         <div class="foot-50">
+            <a href="#privacy" onclick="showSection('privacy', true); return false;">Privacy and Cookie Policy</a>
+         </div>
       </div>
    </footer>
 
@@ -400,7 +429,7 @@ function showSection( sectionName, pushState )
 {
    if( !sectionName ) return;
 
-   // deselect currently selected nav item and hide its section
+   // deselect currently selected nav item
    var elem_arr = document.getElementsByClassName( 'navselected' );
    if( elem_arr && elem_arr.length )
    {
@@ -408,9 +437,18 @@ function showSection( sectionName, pushState )
       {
          var item = elem_arr[ ind ];
          if( !( 'section' in item.dataset ) ) continue;
-         var prev = el( item.dataset.section );
-         if( prev ) prev.style.display = 'none';
          item.classList.remove( 'navselected' );
+      }
+   }
+
+   // hide all sections
+   var section_arr = document.querySelectorAll( 'section' );
+   if( section_arr.length )
+   {
+      for( var ind = 0; ind < section_arr.length; ind++ )
+      {
+         var item = section_arr[ ind ];
+         item.style.display = 'none';
       }
    }
 
