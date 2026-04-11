@@ -140,6 +140,46 @@
    .navbtn:hover { background-color: var(--topnav-hov-bg); }
    .navselected { background-color: var(--topnav-sel-bg); }
    main { flex: 1; }
+   .sponsor-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin: 16px auto;
+   }
+   .sponsor-card {
+      flex: 0 1 320px;
+      background-color: var(--banner1-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+   .sponsor-card img,
+   .sponsor-card svg {
+      max-width: 120px;
+      max-height: 60px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 10px;
+      /*filter: brightness(0) invert(1);*/
+   }
+   .sponsor-card .sponsor-name {
+      font-weight: bold;
+      color: var(--primary);
+      display: none; /*block*/
+      margin-bottom: 4px;
+   }
+   .sponsor-card .sponsor-role {
+      color: var(--text);
+      display: block;
+      margin-top: auto;
+   }
+
    .upcoming {
       background-color: var(--topnav-sel-bg);
       border-radius: 8px;
@@ -206,6 +246,7 @@
          <div class="topnav-inner">
             <button class="navbtn navselected" onclick="onNavClick(this);" data-section="home">Home</button>
             <button class="navbtn" onclick="onNavClick(this);" data-section="previous">Previous events</button>
+            <button class="navbtn" onclick="onNavClick(this);" data-section="sponsors">Sponsors</button>
             <a class="nav-social" href="https://youtube.com/@afcnmotorsport?feature=shared" title="Follow us on Youtube - opens in new window" target="_blank">
                Follow us: <img src="./img/youtube.svg" alt="Youtube logo" width="24" height="24" style="vertical-align:middle;">
             </a>
@@ -277,8 +318,49 @@
             <p>The aim of Race of Remembrance is to raise funds help and support wounded, injured and sick armed forces personnel and their families as well as help service leavers find employment through the development and implementation of training programmes and building partnerships with numerous potential employers. The event holds its own significant meaning to all those involved and is so much more than just a normal race meeting.</p>
          </section>
 
-         <section id="get-involved" style="display:none;">
-            Get involved
+         <section id="sponsors" style="display:none;">
+            <h2>Sponsors</h2>
+            <p>The AFCN Motorsport team is grateful for the generous support of our sponsors, whose expertise and products help keep us competitive on track.</p>
+
+            <div class="sponsor-grid">
+
+               <div class="sponsor-card">
+                  <img src="./img/pirelli.png" alt="Pirelli logo">
+                  <span class="sponsor-name">Pirelli</span>
+                  <span class="sponsor-role">Tyres</span>
+               </div>
+
+               <div class="sponsor-card">
+                  <svg data-name="4c" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148.819 42.52" class="icon-svg"><path class="cls-1" d="M0 0h148.819v42.52H0z" fill="#fff"></path><path d="M107.717 1.417h39.685v39.685h-39.685z" fill="#fd0"></path><path d="M1.417 1.417h104.882v39.685H1.417z" fill="#0095db"></path><path class="cls-1" d="M13.606 13.606h7.87c2.066 0 3.045.984 3.045 3.062v2.055a2.452 2.452 0 01-1.37 2.362 2.419 2.419 0 011.544 2.362v2.405c0 2.077-.979 3.061-3.044 3.061h-8.045zm7.349 6.123c.326 0 .435-.11.435-.437v-2.406c0-.328-.109-.437-.435-.437h-4.218v3.28zm.174 6.342c.326 0 .435-.11.435-.438v-2.755c0-.328-.109-.437-.435-.437h-4.392v3.63zm5.69-12.465h3.13v15.307h-3.13zm5.254 0h3.13v12.42h4.267v2.887h-7.397zm8.884 12.246v-1.924H44v1.705c0 .328.108.438.435.438h4.044c.326 0 .434-.11.434-.438v-1.837c0-.48-.174-.612-.739-.743l-4.044-.875c-1.913-.415-3.13-1.18-3.13-3.149v-2.361c0-2.078.978-3.062 3.043-3.062h4.696c2.066 0 3.044.984 3.044 3.062v1.75H48.74v-1.532c0-.328-.108-.437-.434-.437h-3.74c-.326 0-.435.11-.435.437v1.662c0 .481.174.613.74.744l4.043.874c1.914.416 3.131 1.181 3.131 3.15v2.536c0 2.077-.978 3.061-3.044 3.061h-5c-2.066 0-3.044-.984-3.044-3.061zm16.061-9.403h-3.486v-2.843h10.104v2.843h-3.487v12.464h-3.13zm8.742-2.843h8.905v2.887h-5.774v3.17h4.426v2.843h-4.426v3.52h5.774v2.887H65.76zm11.03 0h3.13v15.307h-3.13zm5.254 0h3.261l5.761 9.862v-9.862h3.044v15.307h-3.044l-5.979-10.212v10.212h-3.043z" fill="#fff"></path><path d="M128.6 27.78l-1.795 4.93 4.251 2.454a1.505 1.505 0 01.498 2.141 1.54 1.54 0 01-2.047.44l-12.943-7.472.001-.002a1.503 1.503 0 01-.815-1.244 1.542 1.542 0 011.4-1.597l2.367-.25a.96.96 0 011.043.697.895.895 0 01-.033.527l-.203.564 1.479.854 1.794-4.93-4.193-2.421.001-.002a1.503 1.503 0 01-.815-1.245 1.542 1.542 0 011.4-1.597l2.367-.249a.96.96 0 011.043.697.895.895 0 01-.033.526l-.203.565 2.73 1.575 1.802-4.952-5.444-3.143.001-.002a1.503 1.503 0 01-.815-1.245 1.542 1.542 0 011.4-1.597l2.367-.248a.96.96 0 011.043.696.895.895 0 01-.033.526l-.203.565 2.73 1.575 1.767-4.857-5.508-3.18a1.505 1.505 0 01-.498-2.141 1.54 1.54 0 012.048-.44l5.004 2.888.364-1.001a.474.474 0 01.608-.283l1.782.648a.474.474 0 01.283.608l-.536 1.473 5.437 3.139v.002a1.503 1.503 0 01.814 1.244 1.542 1.542 0 01-1.4 1.597l-2.367.249a.96.96 0 01-1.043-.697.895.895 0 01.033-.526l.203-.564-2.722-1.572-1.768 4.858 5.443 3.143v.002a1.503 1.503 0 01.814 1.244 1.542 1.542 0 01-1.4 1.597l-2.367.249a.96.96 0 01-1.043-.697.895.895 0 01.033-.526l.203-.564-2.729-1.576-1.802 4.952 5.443 3.143v.003a1.503 1.503 0 01.815 1.244 1.542 1.542 0 01-1.4 1.597l-2.368.249a.96.96 0 01-1.043-.697.895.895 0 01.033-.526l.203-.565zm-2.074 13.322l.508-1.395a.474.474 0 00-.196-.565l-8.844-5.093a.474.474 0 00-.608.283l-2.464 6.77z" fill="#1d1d1b"></path></svg>
+                  <span class="sponsor-name">Bilstein</span>
+                  <span class="sponsor-role">Dampers</span>
+               </div>
+
+               <div class="sponsor-card">
+                  <img src="./img/milltek.png" alt="Milltek logo">
+                  <span class="sponsor-name">Milltek Sport</span>
+                  <span class="sponsor-role">Exhaust</span>
+               </div>
+
+               <div class="sponsor-card">
+                  <img src="./img/eibach.png" alt="Eibach logo">
+                  <span class="sponsor-name">Eibach</span>
+                  <span class="sponsor-role">Tender Springs</span>
+               </div>
+
+               <div class="sponsor-card">
+                  <img src="./img/ebc.svg" alt="EBC Brakes logo">
+                  <span class="sponsor-name">EBC Brakes</span>
+                  <span class="sponsor-role">Race Brakes</span>
+               </div>
+
+               <div class="sponsor-card">
+                  <img src="./img/viezu.png" alt="Viezu logo">
+                  <span class="sponsor-name">Viezu</span>
+                  <span class="sponsor-role">Rolling Road &amp; Engine Management</span>
+               </div>
+
+            </div>
          </section>
       </article>
    </main>
